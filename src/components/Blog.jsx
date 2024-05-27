@@ -24,7 +24,8 @@ const Blog = ({ blog, showBlogInfo, handleLike, handleRemoveBlog }) => {
   return (
     <div style={solid}>
       <div>
-        {blog.title}
+        <span>{blog.title}</span>
+        <span>{blog.author}</span>
         <span>
           <button onClick={(event) => showBlog(event, blog)}>
             {blog.show ? 'hide' : 'view'}
