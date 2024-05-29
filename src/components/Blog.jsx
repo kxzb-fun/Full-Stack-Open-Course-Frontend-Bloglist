@@ -5,6 +5,12 @@ const Blog = ({ blog, showBlogInfo, handleLike, handleRemoveBlog }) => {
   const showBlock = {
     display: blog.show ? 'block' : 'none',
   }
+  const userId =  JSON.parse(window.localStorage.getItem('loggedBlogappUser')).user_id
+  // console.log(userId);
+  // console.log(blog);
+  const showRm = {
+    display: blog.user[0] == userId ? 'block' : 'none',
+  }
   const showBlog = (event, blog) => {
     event.preventDefault()
     showBlogInfo(blog)
@@ -22,7 +28,7 @@ const Blog = ({ blog, showBlogInfo, handleLike, handleRemoveBlog }) => {
     handleRemoveBlog(blog)
   }
   return (
-    <div style={solid}>
+    <div style={solid} className="blog-item">
       <div>
         <span>{blog.title}</span>
         <span>{blog.author}</span>
@@ -41,7 +47,7 @@ const Blog = ({ blog, showBlogInfo, handleLike, handleRemoveBlog }) => {
         </span>
         <span style={block}>Author: {blog.author}</span>
       </p>
-      <div>
+      <div style={showRm}>
         <button onClick={(event) => onRemoveClick(event, blog)}>remove</button>
       </div>
     </div>

@@ -17,6 +17,7 @@ const App = () => {
   const blogFormRef = useRef()
 
   useEffect(() => {
+    // TODO
     blogService.getAll().then((blogs) => setBlogs(blogs))
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
@@ -37,6 +38,8 @@ const App = () => {
 
       window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
       blogService.setToken(user.token)
+      // TODO
+      // blogService.getAll().then((blogs) => setBlogs(blogs))
 
       setUser(user)
       setUsername('')
