@@ -1,6 +1,14 @@
-import Blog from './Blog'
+import Blog from "./Blog";
 const BlogList = ({ blogs, showBlogInfo, handleLike, handleRemoveBlog }) => {
-  return blogs.map((blog) => <Blog key={blog.id} blog={blog} showBlogInfo={showBlogInfo} handleLike={handleLike} handleRemoveBlog={handleRemoveBlog}/>)
-}
+  return blogs.map((blog) => (
+    <Blog
+      key={blog.id}
+      blog={blog}
+      showBlogInfo={showBlogInfo}
+      handleLike={handleLike}
+      handleRemoveBlog={handleRemoveBlog}
+    />
+  ));
+};
 
-export default BlogList
+export default BlogList;

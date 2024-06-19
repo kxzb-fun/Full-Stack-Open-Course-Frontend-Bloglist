@@ -24,50 +24,50 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('login', ({ username, password }) => {
-    cy.request('POST', 'http://localhost:3003/api/login', {
-        username, password
-    }).then(({ body }) => {
-        localStorage.setItem('loggedBlogappUser', JSON.stringify(body))
-        cy.visit('')
-    })
-})
-Cypress.Commands.add('createBlog', ({ title, url, author, likes }) => {
-    cy.request({
-      url: `${Cypress.env('BACKEND')}/blogs`,
-      method: 'POST',
-      body: { title, url, author, likes },
-      headers: {
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('loggedBlogappUser')).token}`
-      }
-    })
-  
-    cy.visit('')
-})
-Cypress.Commands.add('createUser', ({ username, name, password }) => {
+Cypress.Commands.add("login", ({ username, password }) => {
+  cy.request("POST", "http://localhost:3003/api/login", {
+    username,
+    password,
+  }).then(({ body }) => {
+    localStorage.setItem("loggedBlogappUser", JSON.stringify(body));
+    cy.visit("");
+  });
+});
+Cypress.Commands.add("createBlog", ({ title, url, author, likes }) => {
   cy.request({
-    url: `${Cypress.env('BACKEND')}/users`,
-    method: 'POST',
-    body: { username, name, password }
-  })
+    url: `${Cypress.env("BACKEND")}/blogs`,
+    method: "POST",
+    body: { title, url, author, likes },
+    headers: {
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("loggedBlogappUser")).token}`,
+    },
+  });
 
-  cy.visit('')
-})
-Cypress.Commands.add('getAllUsers', () => {
+  cy.visit("");
+});
+Cypress.Commands.add("createUser", ({ username, name, password }) => {
   cy.request({
-    url: `${Cypress.env('BACKEND')}/users`,
-    method: 'GET',
-  })
+    url: `${Cypress.env("BACKEND")}/users`,
+    method: "POST",
+    body: { username, name, password },
+  });
 
-  cy.visit('')
-})
-
-Cypress.Commands.add('getAllBlogs', () => {
+  cy.visit("");
+});
+Cypress.Commands.add("getAllUsers", () => {
   cy.request({
-    url: `${Cypress.env('BACKEND')}/blogs`,
-    method: 'GET',
-  })
+    url: `${Cypress.env("BACKEND")}/users`,
+    method: "GET",
+  });
 
-  cy.visit('')
-})
+  cy.visit("");
+});
 
+Cypress.Commands.add("getAllBlogs", () => {
+  cy.request({
+    url: `${Cypress.env("BACKEND")}/blogs`,
+    method: "GET",
+  });
+
+  cy.visit("");
+});

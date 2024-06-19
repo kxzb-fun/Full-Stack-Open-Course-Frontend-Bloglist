@@ -4,14 +4,15 @@ module.exports = {
     browser: true,
     es2020: true,
     "vitest-globals/env": true,
-    "cypress/globals": true
+    "cypress/globals": true,
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    'plugin:vitest-globals/recommended',
+    "plugin:vitest-globals/recommended",
+    "prettier",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parserOptions: { ecmaVersion: "latest", sourceType: "module" },

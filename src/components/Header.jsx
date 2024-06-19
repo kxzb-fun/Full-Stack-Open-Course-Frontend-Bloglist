@@ -6,7 +6,7 @@ const Header = ({ user, handleLoggout }) => {
         {user.name} logged-in <button onClick={handleLoggout}>loggout</button>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
